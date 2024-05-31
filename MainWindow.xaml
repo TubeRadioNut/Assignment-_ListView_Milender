@@ -135,9 +135,10 @@
         <Image
             HorizontalAlignment="Left"
             Height="273"
-            Margin="75,561,0,0"
+            Margin="64,563,0,0"
             VerticalAlignment="Top"
-            Width="377"
-            Source="/report-card.jpg" />
+            Width="433"
+            Source="/Gradebook_Icon.png"
+            Stretch="UniformToFill" />
     </Grid>
 </Window>

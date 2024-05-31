@@ -33,19 +33,23 @@ namespace Assignment__ListView_Milender
 
             //Add 5 students' info to List of Student
             studentNames.Add(new Student("Mike Johnson", 95.4, 98.2));
-            studentNames.Add(new Student("Jim Dandy", 92.6, 90.4));
+            studentNames.Add(new Student("Jan Dandy", 92.6, 90.4));
             studentNames.Add(new Student("Richard Walker", 88.9, 85));
-            studentNames.Add(new Student("Chez Wheeler", 82, 95));
+            studentNames.Add(new Student("Jill Wheeler", 93.5, 95));
             studentNames.Add(new Student("Brad Holman", 75, 80.7));
             lvStudentGrades.ItemsSource = studentNames;
         }//end MainWindow()
 
+        //Create method for add student button
         private void btnAddStudent_Click(object sender, RoutedEventArgs e)
         {
+            //Create variable for user input of student name
             string studentName = txtStudentName.Text;
+            //Create variables for user input of grades, parse user input by calling the ParseGarde() method passing user input to it
             double quizGrade = ParseGrade(txtQuizGrade.Text);
             double examGrade = ParseGrade(txtExamGrade.Text);
-            if(studentName.Length > 0 && quizGrade > 0 && quizGrade <= 100 && examGrade > 0 && examGrade <= 100)
+            //Test user input for student name is not blank, test user input for grades is between 0 and 100
+            if(studentName.Length > 0 && quizGrade >= 0 && quizGrade <= 100 && examGrade >= 0 && examGrade <= 100)
             {
                 studentNames.Add(new Student(studentName, quizGrade, examGrade));
                 lvStudentGrades.Items.Refresh();
@@ -54,41 +58,54 @@ namespace Assignment__ListView_Milender
                 txtExamGrade.Text = "";
 
             }
+            //Inform user of invalid input with MessageBox
             else
             {
-                MessageBox.Show("Enter a student name or grade between 0 and 100");
+                MessageBox.Show($"Enter a Student name & \nQuiz grade & \nExam Grade between 0 and 100");
             }
             
         }
 
+        //Create method for edit grade button
         private void btnEditGrades_Click(object sender, RoutedEventArgs e)
         {
+            //Create variables for user input of grades, parse user input by calling the ParseGarde() method passing user input to it
             double quizGrade = ParseGrade(txtQuizGrade.Text);
             double examGrade = ParseGrade(txtExamGrade.Text);
+            //Create variable for selected index of list view item
             int selectedIndex = lvStudentGrades.SelectedIndex;
+            //Test user selected a student from the list view
             if(lvStudentGrades.SelectedIndex != -1)
             {
-                if (quizGrade > 0 && quizGrade <= 100 || examGrade > 0 && examGrade <= 100)
+                //Test user input for grades is between 0 and 100
+                if (quizGrade >= 0 && quizGrade <= 100 || examGrade >= 0 && examGrade <= 100)
                 {
+                    //Test user input for quiz grade is between 0 and 100
                     if (quizGrade > 0 && quizGrade <= 100)
                     {
+                        //Use selected index variable for List studentNames index and assign user input to quiz grade
                         studentNames[selectedIndex].QuizGrade = quizGrade;
                     }
+                    //test user input for exam grade is between 0 and 100
                     if (examGrade > 0 && examGrade <= 100)
                     {
+                        //Use selected index variable for List studentNames index and assign uer input to exam grade
                         studentNames[selectedIndex].ExamGrade = examGrade;
                     }
-
+                    //Update list view with updated List studentGrades
                     lvStudentGrades.Items.Refresh();
+                    //Clear user input fields
                     txtStudentName.Text = "";
                     txtQuizGrade.Text = "";
                     txtExamGrade.Text = "";
                 }
+                //inform user of invaid input with message box
                 else
                 {
                     MessageBox.Show("Enter a grade between 0 and 100 in Quiz or Exam Grade or both");
                 }
             }
+            //Inform user no student is selected in the list view
             else
             {
                 MessageBox.Show("Highlight a student first");
@@ -96,23 +113,32 @@ namespace Assignment__ListView_Milender
             
         }
 
+        //Create method for remove student button
         private void btnRemoveStudent_Click(object sender, RoutedEventArgs e)
         {
+            //Create variable for selected index of list view item
             int selectedIndex = lvStudentGrades.SelectedIndex;
-            if(lvStudentGrades.SelectedIndex != -1)
+            //Test user selected a student from the list view
+            if (lvStudentGrades.SelectedIndex != -1)
             {
+                //Use selected index variable for List studentNames index and remove that index
                 studentNames.Remove(studentNames[selectedIndex]);
+                //Update list view with updated List studentGrades
                 lvStudentGrades.Items.Refresh();
             }
+            //Inform user no student is selected in the list view
             else
             {
                 MessageBox.Show("Highlight a Student First");
             }
         }
 
+        //Create method for parse user input to a double tht takes a string in its parameters and returns a double
         public double ParseGrade(string grade)
         {
+            //Create variable for parsed string to a double and assign it the value of negative one
             double parseGrade = -1;
+            //Use try/catch to parse string to a double and return that double
             try
             {
                 parseGrade = double.Parse(grade);
@@ -122,7 +148,7 @@ namespace Assignment__ListView_Milender
             {
                 return parseGrade;
             }
-
+            //don't believe we will ever get here, but need a return for the method
             return parseGrade;
         }
 
