@@ -11,10 +11,12 @@
 
   <ItemGroup>
     <None Remove="Grade.jpg" />
+    <None Remove="report-card.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Grade.jpg" />
+    <Resource Include="report-card.jpg" />
   </ItemGroup>
 
 </Project>
