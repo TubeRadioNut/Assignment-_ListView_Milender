@@ -19,9 +19,10 @@
             FontSize="20">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn 
+                    <GridViewColumn
                         Header=" Student Name "
-                        DisplayMemberBinding="{Binding StudentName}"/>
+                        DisplayMemberBinding="{Binding StudentName}"
+                        Width="200" />
                     <GridViewColumn
                         Header=" Quiz Grade "
                         DisplayMemberBinding="{Binding QuizGrade}" />
@@ -37,7 +38,7 @@
         <TextBox
             x:Name="txtStudentName"
             HorizontalAlignment="Left"
-            Margin="205,52,0,0"
+            Margin="221,52,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Width="276"
@@ -47,11 +48,12 @@
             HorizontalAlignment="Left"
             Margin="34,47,0,0"
             VerticalAlignment="Top"
-            FontSize="22" />
+            FontSize="22"
+            FontWeight="Bold" />
         <TextBox
             x:Name="txtQuizGrade"
             HorizontalAlignment="Left"
-            Margin="205,163,0,0"
+            Margin="221,163,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Width="276"
@@ -61,11 +63,12 @@
             HorizontalAlignment="Left"
             Margin="23,158,0,0"
             VerticalAlignment="Top"
-            FontSize="22" />
+            FontSize="22"
+            FontWeight="Bold" />
         <TextBox
             x:Name="txtExamGrade"
             HorizontalAlignment="Left"
-            Margin="205,283,0,0"
+            Margin="221,282,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Width="276"
@@ -75,47 +78,66 @@
             HorizontalAlignment="Left"
             Margin="19,277,0,0"
             VerticalAlignment="Top"
-            FontSize="22" />
+            FontSize="22"
+            FontWeight="Bold" />
         <Button
             x:Name="btnAddStudent"
             Content="Add Student"
             HorizontalAlignment="Left"
-            Margin="132,365,0,0"
+            Margin="132,340,0,0"
             VerticalAlignment="Top"
             Width="251"
             Height="67"
-            FontSize="20"
-            Click="btnAddStudent_Click" />
+            FontSize="22"
+            Click="btnAddStudent_Click"
+            FontWeight="Bold"
+            FontFamily="Arial Black" />
         <Button
             x:Name="btnRemoveStudent"
             Content="Remove Student"
             HorizontalAlignment="Left"
-            Margin="712,704,0,0"
+            Margin="712,699,0,0"
             VerticalAlignment="Top"
             Width="252"
             Height="67"
-            FontSize="20" />
+            FontSize="22"
+            FontWeight="Bold"
+            FontFamily="Arial Black"
+            Click="btnRemoveStudent_Click" />
         <Button
             x:Name="btnEditGrades"
             Content="Edit Grades"
             HorizontalAlignment="Left"
-            Margin="132,505,0,0"
+            Margin="132,442,0,0"
             VerticalAlignment="Top"
             Width="251"
             Height="67"
-            FontSize="20"
-            Click="btnEditGrades_Click" />
+            FontSize="22"
+            Click="btnEditGrades_Click"
+            FontWeight="Bold"
+            FontFamily="Arial Black" />
         <Label
-            Content="Highlight Student to be Removed"
+            Content="Highlight a Student to be Removed"
             HorizontalAlignment="Left"
-            Margin="671,595,0,0"
+            Margin="624,595,0,0"
             VerticalAlignment="Top"
-            FontSize="22" />
+            FontSize="22"
+            FontWeight="Bold"
+            FontFamily="Arial Black" />
         <Label
             Content="Then Click Remove Student Button"
             HorizontalAlignment="Left"
-            Margin="665,639,0,0"
+            Margin="623,635,0,0"
             VerticalAlignment="Top"
-            FontSize="22" />
+            FontSize="22"
+            FontWeight="Bold"
+            FontFamily="Arial Black" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="273"
+            Margin="56,552,0,0"
+            VerticalAlignment="Top"
+            Width="438"
+            Source="/Grade.jpg" />
     </Grid>
 </Window>

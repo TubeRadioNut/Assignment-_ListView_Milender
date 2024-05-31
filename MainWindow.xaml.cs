@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Assignment__ListView_Milender
 {
@@ -48,13 +49,65 @@ namespace Assignment__ListView_Milender
             {
                 studentNames.Add(new Student(studentName, quizGrade, examGrade));
                 lvStudentGrades.Items.Refresh();
+                txtStudentName.Text = "";
+                txtQuizGrade.Text = "";
+                txtExamGrade.Text = "";
 
             }
             else
             {
-                MessageBox.Show("Enter a student name, grade between 0 and 100");
+                MessageBox.Show("Enter a student name or grade between 0 and 100");
             }
             
+        }
+
+        private void btnEditGrades_Click(object sender, RoutedEventArgs e)
+        {
+            double quizGrade = ParseGrade(txtQuizGrade.Text);
+            double examGrade = ParseGrade(txtExamGrade.Text);
+            int selectedIndex = lvStudentGrades.SelectedIndex;
+            if(lvStudentGrades.SelectedIndex != -1)
+            {
+                if (quizGrade > 0 && quizGrade <= 100 || examGrade > 0 && examGrade <= 100)
+                {
+                    if (quizGrade > 0 && quizGrade <= 100)
+                    {
+                        studentNames[selectedIndex].QuizGrade = quizGrade;
+                    }
+                    if (examGrade > 0 && examGrade <= 100)
+                    {
+                        studentNames[selectedIndex].ExamGrade = examGrade;
+                    }
+
+                    lvStudentGrades.Items.Refresh();
+                    txtStudentName.Text = "";
+                    txtQuizGrade.Text = "";
+                    txtExamGrade.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Enter a grade between 0 and 100 in Quiz or Exam Grade or both");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Highlight a student first");
+            }
+            
+        }
+
+        private void btnRemoveStudent_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = lvStudentGrades.SelectedIndex;
+            if(lvStudentGrades.SelectedIndex != -1)
+            {
+                studentNames.Remove(studentNames[selectedIndex]);
+                lvStudentGrades.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Highlight a Student First");
+            }
         }
 
         public double ParseGrade(string grade)
@@ -73,16 +126,7 @@ namespace Assignment__ListView_Milender
             return parseGrade;
         }
 
-        private void btnEditGrades_Click(object sender, RoutedEventArgs e)
-        {
-            double quizGrade = ParseGrade(txtQuizGrade.Text);
-            double examGrade = ParseGrade(txtExamGrade.Text);
-            
-            if(quizGrade > 0 && quizGrade <= 100 && examGrade > 0 && examGrade <= 100)
-            {
-
-            }
-        }
+        
     }//end class
 }//end namespace
 
