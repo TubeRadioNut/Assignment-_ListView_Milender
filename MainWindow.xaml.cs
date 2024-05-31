@@ -24,10 +24,65 @@ namespace Assignment__ListView_Milender
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Create List of Students named studentNames
+        List<Student> studentNames = new List<Student>();
         public MainWindow()
         {
             InitializeComponent();//<--Don't delete this and keep at the top of MainWindow()
+
+            //Add 5 students' info to List of Student
+            studentNames.Add(new Student("Mike Johnson", 95.4, 98.2));
+            studentNames.Add(new Student("Jim Dandy", 92.6, 90.4));
+            studentNames.Add(new Student("Richard Walker", 88.9, 85));
+            studentNames.Add(new Student("Chez Wheeler", 82, 95));
+            studentNames.Add(new Student("Brad Holman", 75, 80.7));
+            lvStudentGrades.ItemsSource = studentNames;
         }//end MainWindow()
+
+        private void btnAddStudent_Click(object sender, RoutedEventArgs e)
+        {
+            string studentName = txtStudentName.Text;
+            double quizGrade = ParseGrade(txtQuizGrade.Text);
+            double examGrade = ParseGrade(txtExamGrade.Text);
+            if(studentName.Length > 0 && quizGrade > 0 && quizGrade <= 100 && examGrade > 0 && examGrade <= 100)
+            {
+                studentNames.Add(new Student(studentName, quizGrade, examGrade));
+                lvStudentGrades.Items.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("Enter a student name, grade between 0 and 100");
+            }
+            
+        }
+
+        public double ParseGrade(string grade)
+        {
+            double parseGrade = -1;
+            try
+            {
+                parseGrade = double.Parse(grade);
+                return parseGrade;
+            }
+            catch
+            {
+                return parseGrade;
+            }
+
+            return parseGrade;
+        }
+
+        private void btnEditGrades_Click(object sender, RoutedEventArgs e)
+        {
+            double quizGrade = ParseGrade(txtQuizGrade.Text);
+            double examGrade = ParseGrade(txtExamGrade.Text);
+            
+            if(quizGrade > 0 && quizGrade <= 100 && examGrade > 0 && examGrade <= 100)
+            {
+
+            }
+        }
     }//end class
 }//end namespace
 

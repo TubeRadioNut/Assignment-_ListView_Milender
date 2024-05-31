@@ -15,10 +15,22 @@
         <ListView
             x:Name="lvStudentGrades"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            Margin="513,47,37,337">
+            Margin="513,47,37,337"
+            FontSize="20">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn 
+                        Header=" Student Name "
+                        DisplayMemberBinding="{Binding StudentName}"/>
+                    <GridViewColumn
+                        Header=" Quiz Grade "
+                        DisplayMemberBinding="{Binding QuizGrade}" />
+                    <GridViewColumn
+                        Header=" Exam Grade "
+                        DisplayMemberBinding="{Binding ExamGrade}" />
+                    <GridViewColumn
+                        Header=" Average Grade "
+                        DisplayMemberBinding="{Binding AverageGrade}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -72,7 +84,8 @@
             VerticalAlignment="Top"
             Width="251"
             Height="67"
-            FontSize="20" />
+            FontSize="20"
+            Click="btnAddStudent_Click" />
         <Button
             x:Name="btnRemoveStudent"
             Content="Remove Student"
@@ -90,7 +103,8 @@
             VerticalAlignment="Top"
             Width="251"
             Height="67"
-            FontSize="20" />
+            FontSize="20"
+            Click="btnEditGrades_Click" />
         <Label
             Content="Highlight Student to be Removed"
             HorizontalAlignment="Left"
